@@ -1,0 +1,34 @@
+\section{Introduction}
+
+This paper introduces \textit{StochasticSearch.jl}, a package for the Julia
+language~\cite{bezanson2012julia, bezanson2014julia} that provides building
+blocks for the implementation of different stochastic local search
+methods~\cite{hoos2004stochastic, hoos2015overview}, such as simulated
+annealing~\cite{kirkpatrick1983optimization}. The package also provides types
+for the definition of program search spaces, and allows the application of
+multiple parallel instances of search techniques to program autotuning.
+
+Program autotuning is a solution to the Algorithm Selection Problem, first
+published by Rice in 1976~\cite{rice1976algorithm}. Autotuning systems usually
+model features of computer architectures and algorithms in a certain problem
+domain, defining a \emph{search space}. Optimization techniques specific for a
+problem domain are used to search this space for the algorithm or configuration
+that best solves the problem. Different metrics can orient the search, such as
+the time to solve the problem, the accuracy of the solution or the energy
+consumed.  
+
+Autotuning systems, or autotuners, can be specific to domains such as matrix
+multiplication~\cite{bilmes1997phipac} and dense or sparse matrix linear
+algebra~\cite{whaley1998atlas, vuduc2005oski}.  Autotuning frameworks such as
+OpenTuner~\cite{ansel2014opentuner} and ParamILS~\cite{hutter2009paramils}
+implement domain-agnostic tools for the representation and search of program
+configurations.
+
+The StochasticSearch.jl package casts the Algorithm Selection Problem as a
+search problem~\cite{ansel2014opentuner, ansel2014phd}. The user represents the
+program to be tuned as set of parameters. Each point in the space defined by
+this set generates a different program, whose performance is measured. The
+measurements are used to guide stochastic local search techniques that produce
+new points.  Multiple instances of different search techniques
+can be executed in parallel, speeding up the rate at which performance
+improvents are found.
