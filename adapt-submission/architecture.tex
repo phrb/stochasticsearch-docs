@@ -1,0 +1,18 @@
+\section{Architecture of the Package}
+\label{sec:arch}
+
+OpenTuner search spaces are defined by \emph{Configurations}, composed of
+different \emph{Parameter} types. Each type has restricted bounds, and
+implements its own manipulation functions, enabling the exploration of the
+search space.  OpenTuner implements ensembles of optimization and Machine
+Learning techniques that perform well in different problem domains.  The
+results found during the search process are shared between techniques through a
+common results database. OpenTuner uses \emph{meta-techniques} for coordinating
+the distribution of resources between techniques in an ensemble.  An OpenTuner
+application can implement its own search techniques and meta-techniques.
+
+\subsection{Types for Problem Representation}
+\subsection{SLS Building Blocks}
+\subsection{Parallelism}
+
+
