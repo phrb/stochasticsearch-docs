@@ -21,18 +21,16 @@ methods     = [:simulated_annealing,
                :iterative_greedy_construction,
                :iterative_probabilistic_improvement]
 
-instances   = [20, 20, 20, 20, 20]
-iterations  = 100_000
+instances   = [4, 4, 4, 4, 4]
 
 parameters = Dict(:cost               => tour_cost,
                   :cost_args          => Dict{Symbol, Any}(),
                   :initial_config     => configuration,
-                  :iterations         => iterations,
-                  :report_after       => 200,
-                  :cutoff             => 300,
+                  :report_after       => 100_000,
+                  :cutoff             => 1_000,
                   :measurement_method => sequential_measure_mean!,
                   :stopping_criterion => elapsed_time_criterion,
-                  :seconds            => 300,
+                  :seconds            => 600,
                   :methods            => methods,
                   :instances          => instances,
                   :evaluations        => 1)
