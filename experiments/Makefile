@@ -1,13 +1,13 @@
-FILES  = tour_weight.c
-INPUT  = tour_weight.c
+FILES  = tour_cost.c
+INPUT  = tour_cost.c
 CFLAGS = -Wall -g -lm
-OUTPUT = tour_weight
+OUTPUT = tour_cost
 
-all: tour_weight
+all: tour_cost
 
 server: $(FILES)
 	gcc -o $(OUTPUT) $(CFLAGS) $(INPUT)
 
 clean:
-	rm -f tour_weight
+	rm -f tour_cost
 
