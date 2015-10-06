@@ -7,14 +7,17 @@
 end
 
 println("[Starting Tuning Experiment]")
-run(`mkdir experiments`)
-run(`mkdir experiments/att48`)
-run(`mkdir experiments/att48/jl`)
 
-for j = 1:6
+target = "results/att532"
+size   = 532
+
+run(`mkdir $target`)
+run(`mkdir $target/jl`)
+
+for j = 1:1
     println("[Initializing Tuning Run $(string(j))]")
     tour = ["1"]
-    for i = 2:48
+    for i = 2:size
         push!(tour, string(i))
     end
     shuffle!(tour)
@@ -33,20 +36,20 @@ for j = 1:6
     parameters = Dict(:cost               => tour_cost,
                       :cost_args          => Dict{Symbol, Any}(),
                       :initial_config     => configuration,
-                      :report_after       => 20,
+                      :report_after       => 1,
                       :measurement_method => sequential_measure_mean!,
                       :stopping_criterion => elapsed_time_criterion,
-                      :seconds            => 600,
+                      :seconds            => 30,
                       :methods            => methods,
                       :instances          => instances,
                       :evaluations        => 1)
 
     search_task = @task optimize(parameters)
 
-    run(`mkdir experiments/att48/jl/run_$(string(j))`)
-    best = open("experiments/att48/jl/run_$(string(j))/best.txt", "a")
-    last = open("experiments/att48/jl/run_$(string(j))/last.txt", "a")
-    conf = open("experiments/att48/jl/run_$(string(j))/best_configuration.txt", "a")
+    run(`mkdir $target/jl/run_$(string(j))`)
+    best = open("$target/jl/run_$(string(j))/best.txt", "a")
+    last = open("$target/jl/run_$(string(j))/last.txt", "a")
+    conf = open("$target/jl/run_$(string(j))/best_configuration.txt", "a")
 
     println("[Done]\n[Starting Run $(string(j))]")
     result = consume(search_task)

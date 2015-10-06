@@ -8,17 +8,17 @@ mpl.use('agg')
 import matplotlib.pyplot as plt
 
 # StochasticSearch Data
-ss_path       = "att48/jl/"
+ss_path       = "jl/"
 ss_data       = []
 ss_sample_run = [[], []]
 
 # OpenTuner Data
-ot_path       = "att48/py/"
+ot_path       = "py/"
 ot_data       = []
 ot_sample_run = [[], []]
 
 # Optimal
-opt = "att48/optimal.txt"
+opt = "optimal.txt"
 
 for run in os.listdir(ss_path):
     with open(ss_path + run + "/last.txt") as file:
