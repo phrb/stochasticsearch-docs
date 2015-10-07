@@ -8,13 +8,15 @@ end
 
 println("[Starting Tuning Experiment]")
 
-target = "results/att532"
-size   = 532
+target   = "results/att532"
+size     = 532
+runs     = 6
+duration = 600
 
 run(`mkdir $target`)
 run(`mkdir $target/jl`)
 
-for j = 1:1
+for j = 1:runs
     println("[Initializing Tuning Run $(string(j))]")
     tour = ["1"]
     for i = 2:size
@@ -36,10 +38,10 @@ for j = 1:1
     parameters = Dict(:cost               => tour_cost,
                       :cost_args          => Dict{Symbol, Any}(),
                       :initial_config     => configuration,
-                      :report_after       => 1,
+                      :report_after       => 20,
                       :measurement_method => sequential_measure_mean!,
                       :stopping_criterion => elapsed_time_criterion,
-                      :seconds            => 30,
+                      :seconds            => duration,
                       :methods            => methods,
                       :instances          => instances,
                       :evaluations        => 1)

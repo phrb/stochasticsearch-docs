@@ -15,6 +15,11 @@ argparser.add_argument( "-last", "--log-last",
                         type     = str,
                         required = True,
                         help     = "File to save best configuration to.")
+argparser.add_argument( "-size", "--instance-size",
+                        dest     = "size",
+                        type     = int,
+                        required = True,
+                        help     = "Instance size.")
 
 
 class TSP(MeasurementInterface):
@@ -31,7 +36,7 @@ class TSP(MeasurementInterface):
 
     def manipulator(self):
         manipulator = ConfigurationManipulator()
-        manipulator.add_parameter(PermutationParameter(0, range(48)))
+        manipulator.add_parameter(PermutationParameter(0, range(SIZE)))
         return manipulator
 
     def save_final_config(self, configuration):
@@ -52,4 +57,5 @@ class TSP(MeasurementInterface):
 if __name__ == '__main__':
     args = argparser.parse_args()
     LOG_FILE = args.loglast
+    SIZE     = args.size
     TSP.main(args)

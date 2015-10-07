@@ -14,6 +14,11 @@ argparser.add_argument( "-r", "--tuning-runs",
                         type     = int,
                         required = True,
                         help     = "Number of tuning runs to perform.")
+argparser.add_argument( "-size", "--instance-size",
+                        dest     = "size",
+                        type     = int,
+                        required = True,
+                        help     = "Instance size.")
 
 if __name__ == '__main__':
     print "[Initializing Tuning Experiment]"
@@ -23,15 +28,16 @@ if __name__ == '__main__':
     for i in range(args.runs):
         print "[Initializing Tuning Run " + str(i + 1) + "]"
 
-        LOG_DIR = "experiments/att48/py"
+        LOG_DIR = "results/att532/py"
 
-        run_id = "/run_" + str(i + 1)
+        run_id  = "/run_"  + str(i + 1)
         os.system("mkdir " + LOG_DIR)
         os.system("mkdir " + LOG_DIR + run_id)
 
-        cmd += " --stop-after="         + args.time
-        cmd += " --log-last="           + LOG_DIR + run_id + "/last.txt"
-        cmd += " --results-log="        + LOG_DIR + run_id + "/best.txt"
+        cmd += " --stop-after="    + args.time
+        cmd += " --log-last="      + LOG_DIR + run_id + "/last.txt"
+        cmd += " --results-log="   + LOG_DIR + run_id + "/best.txt"
+        cmd += " --instance-size=" + str(args.size)
 
         print "[Starting Run " + str(i + 1) + "]"
         os.system(cmd)

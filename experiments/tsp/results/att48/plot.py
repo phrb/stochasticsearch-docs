@@ -95,7 +95,7 @@ plt.clf()
 fig = plt.figure(1, figsize=(9, 6))
 ax = fig.add_subplot(111)
 
-ax.set_xlim([-4, max(ss_sample_run[0]) + 4])
+ax.set_xlim([-4, max(ot_sample_run[0]) + 4])
 
 ax.scatter(ot_sample_run[0], ot_sample_run[1])
 ax.plot(ot_sample_run[0], ot_sample_run[1])
