@@ -107,3 +107,30 @@ ax.set_xlabel("Tuning Time")
 ax.set_ylabel("Solution Cost")
 
 fig.savefig('att532_10min_best_ot.eps', format = 'eps', dpi = 1000)
+
+plt.clf()
+
+fig = plt.figure(1, figsize=(9, 6))
+ax = fig.add_subplot(111)
+
+ax.set_xlim([-4, max(max(ss_sample_run[0]), max(ot_sample_run[0])) + 4])
+
+ax.set_ylim([min(min(ss_sample_run[1]), min(ot_sample_run[1])) - 50000, max(max(ss_sample_run[1]), max(ot_sample_run[1])) + 50000])
+
+ss_b = ax.scatter(ss_sample_run[0], ss_sample_run[1], marker = 'x', color = 'c')
+ax.plot(ss_sample_run[0], ss_sample_run[1], color = 'c')
+
+ot_b = ax.scatter(ot_sample_run[0], ot_sample_run[1], marker = 'o', color = 'g')
+ax.plot(ot_sample_run[0], ot_sample_run[1], color = 'g')
+
+ax.yaxis.grid(True, linestyle='-', which='major', color='lightgrey',
+                      alpha=0.5)
+
+ax.set_title("Best TSP Solution (532 Cities) during a Tuning Run")
+ax.set_xlabel("Tuning Time")
+ax.set_ylabel("Solution Cost")
+
+plt.legend((ss_b, ot_b),
+           ('StochasticSearch.jl', 'OpenTuner'))
+
+fig.savefig('att532_10min_best_comparison.eps', format = 'eps', dpi = 1000)
