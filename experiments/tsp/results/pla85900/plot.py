@@ -30,7 +30,7 @@ for run in os.listdir(ss_path):
         last = float(file.read().rstrip("\n").split(" ")[1])
         ss_data.append(last)
 
-with open(ss_path + "run_4/best.txt") as file:
+with open(ss_path + "run_2/best.txt") as file:
     text_points = file.read().splitlines()
     for line in text_points:
         point = line.split(" ")
@@ -42,7 +42,7 @@ for run in os.listdir(ot_path):
         best = file.read().splitlines()
         ot_data.append(float(best[-1].split(" ")[1]))
 
-with open(ot_path + "run_3/best.txt") as file:
+with open(ot_path + "run_1/best.txt") as file:
     text_points = file.read().splitlines()
     for line in text_points:
         point = line.split(" ")
