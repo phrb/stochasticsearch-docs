@@ -28,11 +28,12 @@ if __name__ == '__main__':
     for i in range(args.runs):
         print "[Initializing Tuning Run " + str(i + 1) + "]"
 
-        LOG_DIR = "results/att532/py"
+        LOG_DIR = "results/att532/py/15min"
 
         run_id  = "/run_"  + str(i + 1)
         os.system("mkdir " + LOG_DIR)
         os.system("mkdir " + LOG_DIR + run_id)
+        os.system("mkdir .tmp")
 
         cmd += " --stop-after="    + args.time
         cmd += " --log-last="      + LOG_DIR + run_id + "/last.txt"
@@ -43,4 +44,4 @@ if __name__ == '__main__':
         os.system(cmd)
         print "[Tuning Run " + str(i + 1) + " is done]"
 
-        os.system("rm -r opentuner.log opentuner.db")
+        os.system("rm -r opentuner.log opentuner.db .tmp")

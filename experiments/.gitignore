@@ -1,0 +1,4 @@
+*.swp
+opentuner.*
+tour_cost
+.tmp

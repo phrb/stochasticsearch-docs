@@ -1,20 +1,27 @@
 @everywhere begin
-    using StochasticSearch
+    using StochasticSearch, Base.Random.uuid4
     function tour_cost(x::Configuration, parameters::Dict{Symbol, Any})
-        result = float(readall(`./tour_cost $(x["Tour"].value)`))
+        filename   = ".tmp/$(string(uuid4()))"
+        file       = open(filename, "w")
+        round_trip = "$(join(x["Tour"].value, "\n"))\n$(x["Tour"].value[1])\n"
+        write(file, round_trip)
+        close(file)
+        result     = float(readall(`./tour_cost $(filename)`))
+        run(`rm $(filename)`)
         result
     end
 end
 
 println("[Starting Tuning Experiment]")
 
-target   = "results/att532"
+target   = "results/att532/jl/15min"
 size     = 532
-runs     = 6
-duration = 600
+runs     = 4
+duration = 900
 
 run(`mkdir $target`)
-run(`mkdir $target/jl`)
+
+run(`mkdir .tmp`)
 
 for j = 1:runs
     println("[Initializing Tuning Run $(string(j))]")
@@ -48,10 +55,10 @@ for j = 1:runs
 
     search_task = @task optimize(parameters)
 
-    run(`mkdir $target/jl/run_$(string(j))`)
-    best = open("$target/jl/run_$(string(j))/best.txt", "a")
-    last = open("$target/jl/run_$(string(j))/last.txt", "a")
-    conf = open("$target/jl/run_$(string(j))/best_configuration.txt", "a")
+    run(`mkdir $target/run_$(string(j))`)
+    best = open("$target/run_$(string(j))/best.txt", "a")
+    last = open("$target/run_$(string(j))/last.txt", "a")
+    conf = open("$target/run_$(string(j))/best_configuration.txt", "a")
 
     println("[Done]\n[Starting Run $(string(j))]")
     result = consume(search_task)
@@ -68,8 +75,12 @@ for j = 1:runs
     for i in result.minimum["Tour"].value
         println(conf, i)
     end
+    println(conf, result.minimum["Tour"].value[1])
+
     close(best)
     close(last)
     close(conf)
     println("[Run $(string(j)) is done]")
 end
+
+run(`rm -r .tmp`)

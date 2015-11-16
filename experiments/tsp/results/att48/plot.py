@@ -10,13 +10,18 @@ import matplotlib.pyplot as plt
 plt.rc('text', usetex = True)
 plt.rc('font', family = 'serif')
 
+font = {'family' : 'serif',
+        'size'   : 18}
+
+mpl.rc('font', **font)
+
 # StochasticSearch Data
-ss_path       = "jl/"
+ss_path       = "jl/10min/"
 ss_data       = []
 ss_sample_run = [[], []]
 
 # OpenTuner Data
-ot_path       = "py/"
+ot_path       = "py/10min/"
 ot_data       = []
 ot_sample_run = [[], []]
 
@@ -143,6 +148,7 @@ ax.set_xlabel("Tuning Time")
 ax.set_ylabel("Solution Cost")
 
 plt.legend((ss_b, ot_b),
-           ('StochasticSearch.jl', 'OpenTuner'))
+           ('StochasticSearch.jl', 'OpenTuner'),
+           prop = {'size' : 14})
 
 fig.savefig('att48_10min_best_comparison.eps', format = 'eps', dpi = 1000)

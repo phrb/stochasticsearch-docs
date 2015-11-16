@@ -1,5 +1,8 @@
 import argparse
 import logging
+import subprocess
+
+from uuid import uuid4
 
 import opentuner
 from opentuner.search.manipulator import (ConfigurationManipulator,
@@ -24,14 +27,26 @@ argparser.add_argument( "-size", "--instance-size",
 
 class TSP(MeasurementInterface):
     def run(self, desired_result, input, limit):
+        filename = ".tmp/{0}".format(uuid4())
+
         cfg  = desired_result.configuration.data
         tour = cfg[0]
-        cmd  = "./tour_cost "
-        for city in tour:
-            cmd += str(city + 1) + " "
+        round_trip = ""
+        cmd  = "./tour_cost {0}".format(filename)
 
-        result = self.call_program(cmd)
-        cost   = float(result['stdout'])
+        for city in tour:
+            round_trip += "{0}\n".format(city + 1)
+
+        round_trip += "{0}\n".format(tour[0] + 1)
+
+        with open(filename, "w") as file:
+            file.write(round_trip)
+
+        result = subprocess.check_output(cmd, shell = True)
+        cost   = float(result)
+
+        subprocess.check_output("rm {0}".format(filename), shell = True)
+
         return opentuner.resultsdb.models.Result(time = cost)
 
     def manipulator(self):
@@ -48,6 +63,8 @@ class TSP(MeasurementInterface):
 
         for city in tour:
             cmd += str(city + 1) + "\n"
+
+        cmd += str(tour[0] + 1) + "\n"
 
         with open(LOG_FILE, "a+") as file:
             file.write(cmd)

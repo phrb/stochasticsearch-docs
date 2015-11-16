@@ -45,9 +45,9 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \item \alert{Modelos de programação} paralela e distribuída
         \item \alert{Arquiteturas} multi-core e co-processadores
         \item \alert{Autotuning} com programação paralela e distribuída
-            %\pause
+            \pause
         \item Problemas \alert{computacionalmente difíceis}
-            %\pause
+            \pause
         \item Estudar o desempenho da \alert{Busca Estocástica Local}
     \end{itemize}
 \end{frame}
@@ -76,15 +76,15 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     \begin{itemize}
         \item \alert{RQ0}: Como e quando aplicar técnicas de
             autotuning a problemas difíceis e arquiteturas heterogêneas?
-            %\pause
+            \pause
         \item \alert{RQ1}: Técnicas de busca estocástica apresentam
             alguma vantagem em relação a outras técnicas de autotuning?
-            %\pause
+            \pause
         \item \alert{RQ2\textbf{a}}: Como utilizar programação paralela e
             distribuída para melhorar o desempenho de autotuners?
         \item \alert{RQ2\textbf{b}}: Para quais domínios de problema isso é
             vantajoso?
-            %\pause
+            \pause
         \item \alert{RQ3}: Como aproveitar medições de desempenho obtidas
             em arquiteturas diferentes da arquitetura alvo?
     \end{itemize}
@@ -133,10 +133,10 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     \begin{itemize}
         \item \alert{Arcabouço} para autotuning
         \item \alert{Independente} de domínio
-            %\pause
+            \pause
         \item \alert{Conjuntos} de técnicas de busca
         \item \alert{Compartilhamento} de resultados entre técnicas
-            %\pause
+            \pause
         \item Execução \alert{sequencial}
     \end{itemize}
     \let\thefootnote\relax\footnotetext{Código sob Licença MIT: \url{http://github.com/jansel/opentuner}}
@@ -164,13 +164,14 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
             \url{github.com/phrb/gce\_interface}
 
             \url{github.com/phrb/measurement-server}
-            %\pause
+            \pause
         \item Parâmetros de compilação em GPUs (\alert{CUDA}):
             \url{github.com/phrb/gpu-autotuning}
-            %\pause
+            \pause
         \item Resolvedores de \alert{SAT} e \alert{TSP}:
 
             \url{github.com/phrb/sat-opentuner}
+
             \url{github.com/phrb/stochasticsearch-docs}
     \end{itemize}
 \end{frame}
@@ -201,19 +202,20 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     \frametitle{Busca Estocástica Local}
     Os algoritmos de Busca Estocástica Local consistem de
     \alert{heurísticas} para a exploração de um espaço de busca.
-    %\pause
+    \pause
     \begin{itemize}
         \item Naturalmente \alert{paralelas} e \alert{distribuídas}
         \item Podem ser \alert{combinadas} para gerar novas heurísticas
-            %\pause
+            \pause
         \item \alert{Fáceis} de implementar
-            %\pause
-        \item \alert{Estado da Arte}\footnotemark{} na solução de problemas
-            computacionalmente difíceis
+            \pause
+        \item \alert{Estado da Arte}\footnotemark{}[1,2] na solução de 
+            \alert{algumas instâncias} de problemas computacionalmente difíceis
     \end{itemize}
     \footnotetext[1]{Hutter, Frank, et al. \emph{ParamILS: an automatic
         algorithm configuration framework.} Journal of Artificial
         Intelligence Research 36.1 (2009): 267-306.}
+    \footnotetext[2]{Other ref.}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -226,7 +228,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \item Greedy Construction
         \item Random Walk
     \end{itemize}
-            %\pause
+            \pause
     Exemplo de \alert{composição}:
 
     $ProbabilisticImprovement(Temperatura) \rightarrow SimulatedAnnealing$
@@ -238,11 +240,11 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
 
     \textbf{[1]} Hoos, Holger H., and Thomas Stützle.
     \emph{Stochastic local search: Foundations \& applications.} Elsevier, 2004.
-            %\pause
+            \pause
 
     \textbf{[2]} Hoos, Holger H., and Thomas Stützle. \emph{Stochastic Local Search Algorithms: An Overview.}
     Springer Handbook of Computational Intelligence. Springer Berlin Heidelberg, 2015. 1085-1105.
-            %\pause
+            \pause
 
     \textbf{[3]} Hutter, Frank, et al. \emph{ParamILS: an automatic
     algorithm configuration framework.} Journal of Artificial
@@ -258,19 +260,19 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     OpenTuner:
     \begin{itemize}
         \item Permite \alert{pouco controle} do fluxo de execução
-            %\pause
+            \pause
         \item Python: \alert{Global Interpreter Lock}
-            %\pause
+            \pause
         \item Busca e Medições \alert{sequenciais}
-            %\pause
+            \pause
         \item Não é fácil de \alert{paralelizar}
     \end{itemize}
-    %\pause
+    \pause
     Outros motivos:
     \begin{itemize}
         \item Estudar a \alert{composição} e o \alert{desempenho} de técnicas
             de Busca Estocástica Local
-            %\pause
+            \pause
         \item Tentativa de \alert{reproduzir} resultados
     \end{itemize}
 \end{frame}
@@ -284,31 +286,41 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     Por que em Julia?
     \begin{itemize}
         \item Linguagem de \alert{alto nível}
-            %\pause
+            \pause
         \item Programação \alert{concorrente}, \alert{paralela} e \alert{distribuída}
-            %\pause
+            \pause
         \item Ótimo \alert{desempenho}
-            %\pause
+            \pause
         \item É um brinquedo \alert{novo}
         \item Comunidade bastante \alert{ativa}
     \end{itemize}
     \let\thefootnote\relax\footnotetext{Código sob Licença MIT: \url{http://github.com/JuliaLang/julia}}
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{StochasticSearch.jl: Julia}
+    Comparações de desempenho relativo à linguagem \alert{C}:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{juliabenchmarks}
+    \end{figure}%
+    \let\thefootnote\relax\footnotetext{\url{http://julialang.org/benchmarks}}
+\end{frame}
+
 \subsection{Programação Concorrente, Paralela e Distribuída em Julia}
 
 \begin{frame}[fragile]
     \frametitle{Programação Paralela e Distribuída em Julia}
-    O paralelismo em Julia é feito através da troca de mensagens 
+    O paralelismo em Julia é feito através da troca de mensagens
     entre processos:
     \begin{itemize}
-        \item Diferente do MPI, o usuário controla 
+        \item Diferente do MPI, o usuário controla
             explicitamente \alert{apenas um processo}
-            %\pause
-        \item \alert{Remote calls}: executam uma \alert{expressão} em 
+            \pause
+        \item \alert{Remote calls}: executam uma \alert{expressão} em
             outro processo e devolvem uma referência remota (\alert{RemoteRef})
-            %\pause
-        \item \alert{Remote references}: Contém uma referência para objetos 
+            \pause
+        \item \alert{Remote references}: Contém uma referência para objetos
             em \alert{outros processos}
     \end{itemize}
     \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/stdlib/parallel}}
@@ -319,14 +331,14 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     \frametitle{Programação Paralela e Distribuída em Julia}
     Um \alert{ClusterManager} é responsável por:
     \begin{itemize}
-        \item Lançar processos (\alert{workers}) Julia numa rede 
-            %\pause
+        \item Lançar processos (\alert{workers}) Julia numa rede
+            \pause
         \item Gerenciar \alert{eventos} e \alert{comunicação}
             entre processos
-            %\pause
-        \item Gerenciar o \alert{transporte} de dados 
+            \pause
+        \item Gerenciar o \alert{transporte} de dados
     \end{itemize}
-    %\pause
+    \pause
     Algumas funções e objetos disponíveis:
     \begin{lstlisting}
 LocalManager::ClusterManager
@@ -350,17 +362,17 @@ remotecall(id, func, args..)
 remotecall_fetch(id, func, args..)
 remotecall_wait(id, func, args..)
     \end{lstlisting}
-    %\pause
+    \pause
     \begin{lstlisting}
 put!(RemoteRef, value)
 take!(RemoteRef)
     \end{lstlisting}
-    %\pause
+    \pause
     \begin{lstlisting}
 fetch(RemoteRef)
 wait(RemoteRef)
     \end{lstlisting}
-    %\pause
+    \pause
     \begin{lstlisting}
 produce(value)
 consume(Task, values..)
@@ -377,12 +389,12 @@ consume(Task, values..)
 @spawn()
 @spawnat()
     \end{lstlisting}
-    %\pause
+    \pause
     \begin{lstlisting}
 @fetch()     = fetch(@spawn expr)
 @fetchfrom() = fetch(@spawnat p expr)
     \end{lstlisting}
-    %\pause
+    \pause
     \begin{lstlisting}
 @async()
 @sync()
@@ -394,15 +406,7 @@ consume(Task, values..)
     \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/manual/parallel-computing/}}
 \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{StochasticSearch.jl: Julia}
-    Comparações de desempenho relativo à linguagem \alert{C}:
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{juliabenchmarks}
-    \end{figure}%
-    \let\thefootnote\relax\footnotetext{\url{http://julialang.org/benchmarks}}
-\end{frame}
+\subsection{Detalhes de Implementação}
 
 \begin{frame}[fragile]
     \frametitle{StochasticSearch.jl}
@@ -414,12 +418,12 @@ consume(Task, values..)
         \item Pacote para \alert{Busca Estocástica Local}
         \item \alert{Independente} de domínio
         \item \alert{Conjuntos} de técnicas de busca
-            %\pause
+            \pause
         \item Técnicas de execução \alert{independente}
         \item Técnicas de busca \alert{modulares}
-            %\pause
+            \pause
         \item Execução \alert{paralela} e \alert{distribuída}
-            %\pause
+            \pause
         \item Maior \alert{controle} do fluxo de execução
     \end{itemize}
 \end{frame}
@@ -434,7 +438,7 @@ consume(Task, values..)
             \begin{lstlisting}[language=bash]
 julia> Pkg.add("StochastichSearch")
             \end{lstlisting}
-            %\pause
+            \pause
         \item Testes de Unidade: \alert{97\%} de cobertura:
 
                 \url{https://coveralls.io/github/phrb/StochasticSearch.jl}
@@ -454,7 +458,7 @@ julia> Pkg.add("StochastichSearch")
         \item Probabilistic Improvement
         \item Greedy Construction
         \item Random Walk
-            %\pause
+            \pause
         \item \alert{TODO}: Best Improvement
     \end{itemize}
 \end{frame}
@@ -471,7 +475,7 @@ julia> Pkg.add("StochastichSearch")
         \item Randomized First Improvement
         \item Simulated Annealing
     \end{itemize}
-    %\pause
+    \pause
 
     \alert{TODO}:
     \begin{itemize}
@@ -505,7 +509,6 @@ julia> Pkg.add("StochastichSearch")
     \end{figure}%
 \end{frame}
 
-
 \begin{frame}[fragile]
     \frametitle{Comparações: Esforço de Implementação}
     \begin{figure}[H]
@@ -521,31 +524,23 @@ julia> Pkg.add("StochastichSearch")
         \includegraphics[width=.33\textwidth]{hamiltonianpath}
     \end{figure}%
     Comparação do desempenho de \alert{autotuners} que resolvem
-    instâncias do TSP, implementados com o OpenTuner e com o 
+    instâncias do TSP, implementados com o OpenTuner e com o
     StochasticSearch.jl.
-    %\pause
+    \pause
 
     As soluções são representadas por \alert{permutações} das cidades.
 
-    %\pause
-    Disponível em: 
-    
+    \pause
+    Disponível em:
+
     \url{https://github.com/phrb/stochasticsearch-docs}
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Comparações: Desempenho TSP (48 Cidades)}
+    \frametitle{Comparações: Desempenho TSP (532 Cidades)}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{att48_10min_best_comparison}
-    \end{figure}%
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Comparações: Desempenho TSP (48 Cidades)}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{att48_10min_comparison}
+        \includegraphics[width=1\textwidth]{att532_15min_best_comparison}
     \end{figure}%
 \end{frame}
 
@@ -553,7 +548,7 @@ julia> Pkg.add("StochastichSearch")
     \frametitle{Comparações: Desempenho TSP (532 Cidades)}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{att532_10min_best_comparison}
+        \includegraphics[width=1\textwidth]{att532_15min_comparison}
     \end{figure}%
 \end{frame}
 
@@ -561,7 +556,23 @@ julia> Pkg.add("StochastichSearch")
     \frametitle{Comparações: Desempenho TSP (532 Cidades)}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{att532_10min_comparison}
+        \includegraphics[width=1\textwidth]{att532_30min_best_comparison}
+    \end{figure}%
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Comparações: Desempenho TSP (85900 Cidades)}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{pla85900_15min_best_comparison}
+    \end{figure}%
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Comparações: Desempenho TSP (85900 Cidades)}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{pla85900_15min_comparison}
     \end{figure}%
 \end{frame}
 
@@ -571,17 +582,17 @@ julia> Pkg.add("StochastichSearch")
     \frametitle{Trabalhos Futuros}
     \begin{itemize}
         \item Implementar Busca Estocástica Local no \alert{OpenTuner}
-            %\pause
+            \pause
         \item Implementar \alert{ClusterManagers} para \alert{GPUs} e \alert{Nuvem}
-            %\pause
+            \pause
         \item Parâmetros de compilação \alert{CUDA}
         \item Resolvedores \alert{SAT}
-            %\pause
+            \pause
         \item Experimentos com \alert{domínios diferentes}
         \item Experimentos com \alert{execução distribuída}
-            %\pause
+            \pause
         \item \alert{Aumentar} a cobertura de testes
-            %\pause
+            \pause
         \item Implementar técnicas de busca mais \lq{}\lq{}\alert{poderosas}\rq{}\rq{}
     \end{itemize}
 \end{frame}
@@ -592,10 +603,10 @@ julia> Pkg.add("StochastichSearch")
     \begin{itemize}
         \item \alert{RQ1}: Técnicas de busca estocástica apresentam
             alguma vantagem em relação a outras técnicas de autotuning?
-            %\pause
+            \pause
         \item \alert{RQ2\textbf{a}}: Como utilizar programação paralela e
             distribuída para melhorar o desempenho de autotuners?
-            %\pause
+            \pause
         \item \alert{RQ2\textbf{b}}: Para quais domínios de problema isso é
             vantajoso?
     \end{itemize}
