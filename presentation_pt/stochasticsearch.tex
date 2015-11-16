@@ -44,6 +44,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     \begin{itemize}
         \item \alert{Modelos de programação} paralela e distribuída
         \item \alert{Arquiteturas} multi-core e co-processadores
+            \pause
         \item \alert{Autotuning} com programação paralela e distribuída
             \pause
         \item Problemas \alert{computacionalmente difíceis}
@@ -58,7 +59,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \centering
         \includegraphics[width=1\textwidth]{35years}
     \end{figure}%
-    \let\thefootnote\relax\footnotetext{\url{http://karlrupp.net/2015/06/40-years-of-microprocessor-trend-data}}
+    \let\thefootnote\relax\footnotetext{Karl Rupp: \url{http://goo.gl/WLdveJ}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -67,7 +68,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \centering
         \includegraphics[width=1\textwidth]{40years}
     \end{figure}%
-    \let\thefootnote\relax\footnotetext{\url{http://karlrupp.net/2015/06/40-years-of-microprocessor-trend-data}}
+    \let\thefootnote\relax\footnotetext{Karl Rupp: \url{http://goo.gl/WLdveJ}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -139,7 +140,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
             \pause
         \item Execução \alert{sequencial}
     \end{itemize}
-    \let\thefootnote\relax\footnotetext{Código sob Licença MIT: \url{http://github.com/jansel/opentuner}}
+    \let\thefootnote\relax\footnotetext{Código sob Licença MIT: \href{http://github.com/jansel/opentuner}{\tt github.com/jansel/opentuner}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -154,25 +155,25 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
 
 \begin{frame}[fragile]
     \frametitle{OpenTuner}
-    Trabalho com OpenTuner em andamento:
+    Trabalho com OpenTuner em andamento (disponível no \alert{GitHub}):
     \begin{itemize}
         \item Computação Distribuída (\alert{Google Compute Engine}):
-            \url{github.com/phrb/gce\_autotuning\_example}
+            \href{https://github.com/phrb/gce\_autotuning\_example}{\tt phrb/gce\_autotuning\_example}
 
-            \url{github.com/phrb/measurement\_client}
+            \href{https://github.com/phrb/measurement\_client}{\tt phrb/measurement\_client}
 
-            \url{github.com/phrb/gce\_interface}
+            \href{https://github.com/phrb/gce\_interface}{\tt phrb/gce\_interface}
 
-            \url{github.com/phrb/measurement-server}
+            \href{https://github.com/phrb/measurement-server}{\tt phr/measurement-server}
             \pause
         \item Parâmetros de compilação em GPUs (\alert{CUDA}):
-            \url{github.com/phrb/gpu-autotuning}
+            \href{https://github.com/phrb/gpu-autotuning}{\tt phrb/gpu-autotuning}
             \pause
         \item Resolvedores de \alert{SAT} e \alert{TSP}:
 
-            \url{github.com/phrb/sat-opentuner}
+            \href{https://github.com/phrb/sat-opentuner}{\tt phrb/sat-opentuner}
 
-            \url{github.com/phrb/stochasticsearch-docs}
+            \href{https://github.com/phrb/stochasticsearch-docs}{\tt phrb/stochasticsearch-docs}
     \end{itemize}
 \end{frame}
 
@@ -210,7 +211,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \item \alert{Fáceis} de implementar
             \pause
         \item \alert{Estado da Arte}\footnotemark[1]\footnotemark[2] na solução
-            de \alert{algumas instâncias} de problemas computacionalmente
+            de \alert{alguns tipos} de instâncias de problemas computacionalmente
             difíceis
     \end{itemize}
     \footnotetext[1]{Hutter, Frank, et al. \emph{ParamILS: an automatic
@@ -289,15 +290,14 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     Por que em Julia?
     \begin{itemize}
         \item Linguagem de \alert{alto nível}
-            \pause
         \item Programação \alert{concorrente}, \alert{paralela} e \alert{distribuída}
             \pause
         \item Ótimo \alert{desempenho}
             \pause
         \item É um brinquedo \alert{novo}
-        \item Comunidade bastante \alert{ativa}
+        \item Comunidade bastante \alert{ativa} (\textbf{v0.4.x-stable}, \textbf{v0.5-dev})
     \end{itemize}
-    \let\thefootnote\relax\footnotetext{Código sob Licença MIT: \url{http://github.com/JuliaLang/julia}}
+    \let\thefootnote\relax\footnotetext{Código sob Licença MIT: \href{http://github.com/JuliaLang/julia}{\tt github.com/JuliaLang/julia}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -307,7 +307,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \centering
         \includegraphics[width=1\textwidth]{juliabenchmarks}
     \end{figure}%
-    \let\thefootnote\relax\footnotetext{\url{http://julialang.org/benchmarks}}
+    \let\thefootnote\relax\footnotetext{\href{http://julialang.org/benchmarks}{\tt julialang.org/benchmarks}}
 \end{frame}
 
 \subsection{Programação Concorrente, Paralela e Distribuída em Julia}
@@ -325,9 +325,11 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
             \pause
         \item \alert{Remote references}: Contém uma referência para objetos
             em \alert{outros processos}
+            \pause
+        \item \alert{Threading}: \href{https://github.com/JuliaLang/julia/pull/13410}{Pull request \#13410}
     \end{itemize}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/stdlib/parallel}}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/manual/parallel-computing/}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/stdlib/parallel}{\tt docs.julialang.org/en/stable/stdlib/parallel}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/manual/parallel-computing}{\tt docs.julialang.org/en/stable/manual/parallel-computing}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -351,8 +353,8 @@ addprocs()
 rmprocs()
 procs()
     \end{lstlisting}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/stdlib/parallel}}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/manual/parallel-computing/}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/stdlib/parallel}{\tt docs.julialang.org/en/stable/stdlib/parallel}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/manual/parallel-computing}{\tt docs.julialang.org/en/stable/manual/parallel-computing}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -380,8 +382,8 @@ wait(RemoteRef)
 produce(value)
 consume(Task, values..)
     \end{lstlisting}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/stdlib/parallel}}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/manual/parallel-computing/}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/stdlib/parallel}{\tt docs.julialang.org/en/stable/stdlib/parallel}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/manual/parallel-computing}{\tt docs.julialang.org/en/stable/manual/parallel-computing}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -405,8 +407,8 @@ consume(Task, values..)
 @parallel()
 @everywhere()
     \end{lstlisting}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/stdlib/parallel}}
-    \let\thefootnote\relax\footnotetext{\url{http://docs.julialang.org/en/stable/manual/parallel-computing/}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/stdlib/parallel}{\tt docs.julialang.org/en/stable/stdlib/parallel}}
+    \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/manual/parallel-computing}{\tt docs.julialang.org/en/stable/manual/parallel-computing}}
 \end{frame}
 
 \subsection{Detalhes de Implementação}
@@ -436,7 +438,7 @@ consume(Task, values..)
     \begin{itemize}
         \item Código sob Licença MIT:
 
-            \url{http://github.com/phrb/StochasticSearch.jl}
+            \href{http://github.com/phrb/StochasticSearch.jl}{\tt github.com/phrb/StochasticSearch.jl}
         \item Disponível no \alert{repositório oficial}:
             \begin{lstlisting}[language=bash]
 julia> Pkg.add("StochastichSearch")
@@ -444,17 +446,17 @@ julia> Pkg.add("StochastichSearch")
             \pause
         \item Testes de Unidade: \alert{97\%} de cobertura:
 
-                \url{https://coveralls.io/github/phrb/StochasticSearch.jl}
+                \href{https://coveralls.io/github/phrb/StochasticSearch.jl}{\tt coveralls.io/github/phrb/StochasticSearch.jl}
         \item Integração Contínua (\alert{TravisCI}):
 
-            \url{https://travis-ci.org/phrb/StochasticSearch.jl}
+            \href{https://travis-ci.org/phrb/StochasticSearch.jl}{\tt travis-ci.org/phrb/StochasticSearch.jl}
     \end{itemize}
 \end{frame}
 
 \subsection{Busca Estocástica Local}
 
 \begin{frame}[fragile]
-    \frametitle{Composição}
+    \frametitle{Busca Estocástica Local: Composição}
     Blocos de construção:
     \begin{itemize}
         \item First Improvement
@@ -467,7 +469,7 @@ julia> Pkg.add("StochastichSearch")
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Composição}
+    \frametitle{Busca Estocástica Local: Composição}
     Técnicas de busca usando os blocos:
 
     \alert{DONE}:
@@ -495,7 +497,7 @@ julia> Pkg.add("StochastichSearch")
 \subsection{Comparando com o OpenTuner}
 
 \begin{frame}[fragile]
-    \frametitle{Comparações: Fluxo de Execução}
+    \frametitle{Comparações com o OpenTuner: Fluxo de Execução}
     Obtenção de um resultado no OpenTuner, simplificadamente:
     \begin{figure}[H]
         \centering
@@ -504,7 +506,7 @@ julia> Pkg.add("StochastichSearch")
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Comparações: Fluxo de Execução}
+    \frametitle{Comparações com o OpenTuner: Fluxo de Execução}
     Obtenção de um resultado no StochasticSearch.jl, simplificadamente:
     \begin{figure}[H]
         \centering
@@ -513,7 +515,7 @@ julia> Pkg.add("StochastichSearch")
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Comparações: Esforço de Implementação}
+    \frametitle{Comparações com o OpenTuner: Esforço de Implementação}
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\textwidth]{loc_comparison}
@@ -524,19 +526,20 @@ julia> Pkg.add("StochastichSearch")
     \frametitle{Comparações: Travelling Salesperson Problem}
     \begin{figure}[H]
         \centering
-        \includegraphics[width=.33\textwidth]{hamiltonianpath}
+        \includegraphics[width=.28\textwidth]{hamiltonianpath}
     \end{figure}%
     Comparação do desempenho de \alert{autotuners} que resolvem
-    instâncias do TSP, implementados com o OpenTuner e com o
-    StochasticSearch.jl.
+    instâncias\footnotemark{} do TSP, implementados com o OpenTuner e 
+    com o StochasticSearch.jl.
     \pause
 
     As soluções são representadas por \alert{permutações} das cidades.
 
     \pause
     Disponível em:
+    \href{https://github.com/phrb/stochasticsearch-docs}{\tt github.com/phrb/stochasticsearch-docs}
 
-    \url{https://github.com/phrb/stochasticsearch-docs}
+    \footnotetext{TSPLIB: \url{http://goo.gl/8ZZXi2}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -585,6 +588,9 @@ julia> Pkg.add("StochastichSearch")
     \frametitle{Trabalhos Futuros}
     \begin{itemize}
         \item Implementar Busca Estocástica Local no \alert{OpenTuner}
+            \pause
+        \item \alert{Adicionar}, \alert{remover} e \alert{modificar} técnicas
+            de busca e parâmetros em \alert{tempo de execução}
             \pause
         \item Implementar \alert{ClusterManagers} para \alert{GPUs} e \alert{Nuvem}
             \pause
