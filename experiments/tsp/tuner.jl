@@ -1,6 +1,6 @@
 @everywhere begin
     using StochasticSearch, Base.Random.uuid4
-    function tour_cost(x::Configuration, parameters::Dict{Symbol, Any})
+    function tour_cost{T <: Configuration}(x::T, parameters::Dict{Symbol, Any})
         filename   = ".tmp/$(string(uuid4()))"
         file       = open(filename, "w")
         round_trip = "$(join(x["Tour"].value, "\n"))\n$(x["Tour"].value[1])\n"
@@ -14,12 +14,12 @@ end
 
 println("[Starting Tuning Experiment]")
 
-target   = "results/att532/jl/15min"
-size     = 532
-runs     = 4
+target   = "results/pla85900/jl/15min/par"
+size     = 85900
+runs     = 4 
 duration = 900
 
-run(`mkdir $target`)
+#run(`mkdir $target`)
 
 run(`mkdir .tmp`)
 
@@ -46,7 +46,7 @@ for j = 1:runs
                       :cost_args          => Dict{Symbol, Any}(),
                       :initial_config     => configuration,
                       :report_after       => 20,
-                      :measurement_method => sequential_measure_mean!,
+                      :measurement_method => measure_mean!,
                       :stopping_criterion => elapsed_time_criterion,
                       :seconds            => duration,
                       :methods            => methods,
