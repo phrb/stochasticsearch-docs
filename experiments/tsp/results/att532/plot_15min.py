@@ -11,12 +11,12 @@ plt.rc('text', usetex = True)
 plt.rc('font', family = 'serif')
 
 font = {'family' : 'serif',
-        'size'   : 18}
+        'size'   : 14}
 
 mpl.rc('font', **font)
 
 # StochasticSearch Data
-ss_path       = "jl/15min/seq/"
+ss_path       = "jl/15min/1w_smm/"
 ss_data       = []
 ss_sample_run = [[], []]
 
@@ -30,7 +30,7 @@ for run in os.listdir(ss_path):
         last = float(file.read().rstrip("\n").split(" ")[1])
         ss_data.append(last)
 
-with open(ss_path + "run_2/best.txt") as file:
+with open(ss_path + "run_4/best.txt") as file:
     text_points = file.read().splitlines()
     for line in text_points:
         point = line.split(" ")
@@ -98,6 +98,6 @@ ax.set_ylabel("Solution Cost")
 
 plt.legend((ss_b, ot_b),
            ('StochasticSearch.jl', 'OpenTuner'),
-           prop = {'size' : 14})
+           prop = {'size' : 12})
 
 fig.savefig('att532_15min_best_comparison.eps', format = 'eps', dpi = 1000)

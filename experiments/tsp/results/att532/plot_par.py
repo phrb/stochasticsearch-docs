@@ -11,17 +11,17 @@ plt.rc('text', usetex = True)
 plt.rc('font', family = 'serif')
 
 font = {'family' : 'serif',
-        'size'   : 15}
+        'size'   : 14}
 
 mpl.rc('font', **font)
 
 # StochasticSearch Seq
-ss_path           = "jl/15min/seq/"
+ss_path           = "jl/15min/1w_smm/"
 ss_data           = []
 ss_sample_run     = [[], []]
 
 # StochasticSearch Par
-ss_par_path       = "jl/15min/par/"
+ss_par_path       = "jl/15min/8w_smm/"
 ss_par_data       = []
 ss_par_sample_run = [[], []]
 
@@ -35,7 +35,7 @@ for run in os.listdir(ss_path):
         last = float(file.read().rstrip("\n").split(" ")[1])
         ss_data.append(last)
 
-with open(ss_path + "run_1/best.txt") as file:
+with open(ss_path + "run_4/best.txt") as file:
     text_points = file.read().splitlines()
     for line in text_points:
         point = line.split(" ")
@@ -47,7 +47,7 @@ for run in os.listdir(ss_par_path):
         last = float(file.read().rstrip("\n").split(" ")[1])
         ss_par_data.append(last)
 
-with open(ss_par_path + "run_3/best.txt") as file:
+with open(ss_par_path + "run_4/best.txt") as file:
     text_points = file.read().splitlines()
     for line in text_points:
         point = line.split(" ")
@@ -59,7 +59,7 @@ for run in os.listdir(ot_path):
         best = file.read().splitlines()
         ot_data.append(float(best[-1].split(" ")[1]))
 
-with open(ot_path + "run_4/best.txt") as file:
+with open(ot_path + "run_2/best.txt") as file:
     text_points = file.read().splitlines()
     for line in text_points:
         point = line.split(" ")
@@ -78,7 +78,7 @@ plt.setp(bp['boxes'], color='black')
 plt.setp(bp['whiskers'], color='darkgray')
 plt.setp(bp['fliers'], color='red', marker='+')
 
-ax.set_xticklabels(["StochasticSearch.jl (seq)", "OpenTuner", "StochasticSearch.jl (p = 4)"])
+ax.set_xticklabels(["1 worker", "OpenTuner", "8 workers"])
 
 # Add a horizontal grid to the plot, but make it very light in color
 # so we can use it for reading data values but not be distracting
@@ -117,7 +117,7 @@ ax.set_xlabel("Tuning Time")
 ax.set_ylabel("Solution Cost")
 
 plt.legend((ss_b, ot_b, ss_par_b),
-           ('StochasticSearch.jl (seq)', 'OpenTuner', 'StochasticSearch.jl (p = 8)'),
-           prop = {'size' : 13})
+           ('1 worker', 'OpenTuner', '8 workers'),
+           prop = {'size' : 12})
 
 fig.savefig('par_att532_15min_best_comparison.eps', format = 'eps', dpi = 1000)
