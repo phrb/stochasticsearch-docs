@@ -14,16 +14,16 @@ end
 
 println("[Starting Tuning Experiment]")
 
-target   = "results/att532/jl/15min/8w_smm"
-size     = 532
-runs     = 4
+target   = "results/pla85900/jl/15min/1w_smm"
+size     = 85900
+runs     = 8
 duration = 900
 
-run(`mkdir $target`)
+#run(`mkdir $target`)
 
 run(`mkdir .tmp`)
 
-for j = 1:runs
+for j = 5:runs
     println("[Initializing Tuning Run $(string(j))]")
     tour = ["1"]
     for i = 2:size
