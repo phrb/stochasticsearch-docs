@@ -14,8 +14,8 @@ end
 
 println("[Starting Tuning Experiment]")
 
-target   = "results/pla85900/jl/15min/1w_smm"
-size     = 85900
+target   = "results/att532/jl/15min/8w_smm"
+size     = 532
 runs     = 4
 duration = 900
 
