@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-char *INSTANCE = "instances/att532/att532.tsp";
+char *INSTANCE = "instances/pla85900/pla85900.tsp";
 
 int count_lines(char *filename) {
     FILE *file    = fopen(filename, "r");

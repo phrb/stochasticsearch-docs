@@ -14,8 +14,8 @@ end
 
 println("[Starting Tuning Experiment]")
 
-target   = "results/att532/jl/15min/par"
-size     = 532
+target   = "results/pla85900/jl/15min/1w_smm"
+size     = 85900
 runs     = 4
 duration = 900
 
@@ -46,7 +46,7 @@ for j = 1:runs
                       :cost_args          => Dict{Symbol, Any}(),
                       :initial_config     => configuration,
                       :report_after       => 20,
-                      :measurement_method => measure_mean!,
+                      :measurement_method => sequential_measure_mean!,
                       :stopping_criterion => elapsed_time_criterion,
                       :seconds            => duration,
                       :methods            => methods,
