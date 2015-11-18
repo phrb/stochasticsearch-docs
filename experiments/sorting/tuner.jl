@@ -8,13 +8,13 @@ end
 
 println("[Starting Tuning Experiment]")
 
-target   = "results/2_26/jl/15min/par"
-size     = 67108864
+target   = "results/2_17/jl/15min/1w"
+size     = 131072
 max_cut  = 200
-runs     = 1
-duration = 60
+runs     = 4 
+duration = 900
 
-run(`mkdir $target`)
+#run(`mkdir $target`)
 
 for j = 1:runs
     println("[Initializing Tuning Run $(string(j))]")

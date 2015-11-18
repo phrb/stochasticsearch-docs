@@ -40,15 +40,15 @@ void quick_sort(int *a, int n, int cutoff) {
         quick_sort(a + i, n - i, cutoff);
     };
 };
- 
+
 int main(int argc, char *argv[]) {
-    int size   = 67108864;
+    int size   = 131072;
     int cutoff = (int) strtol(argv[1], (char **)NULL, 10);
 
     int *a = (int *) malloc(sizeof(int) * size);
 
     srand(size);
-    
+
     int i;
     for (i = 0; i < size; i++) {
         a[i] = rand();
