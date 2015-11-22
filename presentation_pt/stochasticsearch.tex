@@ -1,6 +1,6 @@
 \documentclass[10pt, compress]{beamer}
 
-\usetheme[numbering=fraction, sectionpage=none, progressbar=frametitle]{m}
+\usetheme[numbering=fraction, progressbar=frametitle]{m}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{listings}
@@ -34,10 +34,15 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
 \begin{frame}
     \frametitle{Roteiro}
     \setbeamertemplate{section in toc}[sections numbered]
-    \tableofcontents[hideallsubsections]
+    \begin{enumerate}
+        \item Introdução
+        \item OpenTuner
+        \item Busca Estocástica Local
+        \item StochasticSearch.jl
+    \end{enumerate}
 \end{frame}
 
-\section{Motivação e Perguntas de Pesquisa}
+\section{Motivação e Contexto}
 
 \begin{frame}[fragile]
     \frametitle{Motivação}
@@ -121,9 +126,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     \end{itemize}
 \end{frame}
 
-\section{Autotuning \& OpenTuner}
-
-\subsection{OpenTuner}
+\section{OpenTuner}
 
 \begin{frame}[fragile]
     \frametitle{OpenTuner}
@@ -309,7 +312,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     \let\thefootnote\relax\footnotetext{\href{http://julialang.org/benchmarks}{\tt julialang.org/benchmarks}}
 \end{frame}
 
-\subsection{Programação Concorrente, Paralela e Distribuída em Julia}
+\section{Programação Paralela e Distribuída em Julia}
 
 \begin{frame}[fragile]
     \frametitle{Programação Paralela e Distribuída em Julia}
@@ -407,7 +410,7 @@ consume(Task, values..)
     \let\thefootnote\relax\footnotetext{\href{http://docs.julialang.org/en/stable/manual/parallel-computing}{\tt docs.julialang.org/en/stable/manual/parallel-computing}}
 \end{frame}
 
-\subsection{Detalhes de Implementação}
+\section{Detalhes de Implementação}
 
 \begin{frame}[fragile]
     \frametitle{StochasticSearch.jl}
@@ -490,7 +493,7 @@ julia> Pkg.add("StochastichSearch")
     \end{itemize}
 \end{frame}
 
-\subsection{Comparando com o OpenTuner}
+\section{Comparações com o OpenTuner}
 
 \begin{frame}[fragile]
     \frametitle{Comparações com o OpenTuner: Fluxo de Execução}
