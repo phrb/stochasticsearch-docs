@@ -54,6 +54,22 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{Autotuning}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \centering
+        Configurações e Otimizações
+        \column{0.5\textwidth}
+        \centering
+        Espaço de Busca
+    \end{columns}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{autotuning}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
     \frametitle{Motivação}
     \begin{figure}[H]
         \centering
@@ -107,22 +123,6 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
 
 \section{Autotuning \& OpenTuner}
 
-\begin{frame}[fragile]
-    \frametitle{Autotuning}
-    \begin{columns}
-        \column{0.5\textwidth}
-        \centering
-        Configurações e Otimizações
-        \column{0.5\textwidth}
-        \centering
-        Espaço de Busca
-    \end{columns}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{autotuning}
-    \end{figure}
-\end{frame}
-
 \subsection{OpenTuner}
 
 \begin{frame}[fragile]
@@ -164,7 +164,7 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
 
             \href{https://github.com/phrb/gce\_interface}{\tt phrb/gce\_interface}
 
-            \href{https://github.com/phrb/measurement-server}{\tt phr/measurement-server}
+            \href{https://github.com/phrb/measurement-server}{\tt phrb/measurement-server}
             \pause
         \item Parâmetros de compilação em GPUs (\alert{CUDA}):
             \href{https://github.com/phrb/gpu-autotuning}{\tt phrb/gpu-autotuning}
@@ -209,7 +209,6 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \item Podem ser \alert{combinadas} para gerar novas heurísticas
             \pause
         \item \alert{Fáceis} de implementar
-            \pause
         \item \alert{Estado da Arte}\footnotemark[1]\footnotemark[2] na solução
             de \alert{alguns tipos} de instâncias de problemas computacionalmente
             difíceis
@@ -267,11 +266,8 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     OpenTuner:
     \begin{itemize}
         \item Permite \alert{pouco controle} do fluxo de execução
-            \pause
         \item Python: \alert{Global Interpreter Lock}
-            \pause
         \item Busca e Medições \alert{sequenciais}
-            \pause
         \item Não é fácil de \alert{paralelizar}
     \end{itemize}
     \pause
@@ -325,7 +321,6 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
             \pause
         \item \alert{Remote calls}: executam uma \alert{expressão} em
             outro processo e devolvem uma referência remota (\alert{RemoteRef})
-            \pause
         \item \alert{Remote references}: Contém uma referência para objetos
             em \alert{outros processos}
             \pause
@@ -340,10 +335,8 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
     Um \alert{ClusterManager} é responsável por:
     \begin{itemize}
         \item Lançar processos (\alert{workers}) Julia numa rede
-            \pause
         \item Gerenciar \alert{eventos} e \alert{comunicação}
             entre processos
-            \pause
         \item Gerenciar o \alert{transporte} de dados
     \end{itemize}
     \pause
@@ -532,7 +525,7 @@ julia> Pkg.add("StochastichSearch")
         \includegraphics[width=.28\textwidth]{hamiltonianpath}
     \end{figure}%
     Comparação do desempenho de \alert{autotuners} que resolvem
-    instâncias\footnotemark{} do TSP, implementados com o OpenTuner e 
+    instâncias\footnotemark{} do TSP, implementados com o OpenTuner e
     com o StochasticSearch.jl.
     \pause
 
