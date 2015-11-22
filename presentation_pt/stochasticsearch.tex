@@ -233,9 +233,12 @@ Alfredo Goldman \\{\scriptsize gold@ime.usp.br} }
         \item Random Walk
     \end{itemize}
             \pause
-    Exemplo de \alert{composição}:
+    Exemplos de \alert{composição}:
 
-    $ProbabilisticImprovement(Temperatura) \rightarrow SimulatedAnnealing$
+    \small{$RandomWalk + FirstImprovement \rightarrow RandomizedIterativeImprovement$}
+    \pause
+
+    \small{$ProbabilisticImprovement(Temperatura) \rightarrow SimulatedAnnealing$}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -362,10 +365,7 @@ procs()
     Chamadas de funções:
 
     \begin{lstlisting}
-Task(func)
 remotecall(id, func, args..)
-remotecall_fetch(id, func, args..)
-remotecall_wait(id, func, args..)
     \end{lstlisting}
     \pause
     \begin{lstlisting}
@@ -376,9 +376,12 @@ take!(RemoteRef)
     \begin{lstlisting}
 fetch(RemoteRef)
 wait(RemoteRef)
+remotecall_fetch(id, func, args..)
+remotecall_wait(id, func, args..)
     \end{lstlisting}
     \pause
     \begin{lstlisting}
+Task(func)
 produce(value)
 consume(Task, values..)
     \end{lstlisting}
@@ -599,6 +602,7 @@ julia> Pkg.add("StochastichSearch")
             \pause
         \item Experimentos com \alert{domínios diferentes}
         \item Experimentos com \alert{execução distribuída}
+        \item Usar as \alert{threads nativas} em Julia
             \pause
         \item \alert{Aumentar} a cobertura de testes
             \pause
