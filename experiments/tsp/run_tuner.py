@@ -28,7 +28,7 @@ if __name__ == '__main__':
     for i in range(args.runs):
         print "[Initializing Tuning Run " + str(i + 1) + "]"
 
-        LOG_DIR = "results/pla85900/py/15min"
+        LOG_DIR = "results/pla85900_VM"
 
         run_id  = "/run_"  + str(i + 1)
         os.system("mkdir " + LOG_DIR)
