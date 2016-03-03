@@ -49,6 +49,8 @@ with open(ot_path + "run_2/best.txt") as file:
         ot_sample_run[0].append(float(point[0]))
         ot_sample_run[1].append(float(point[1]))
 
+optimal_solution = 27686
+
 boxplot_data = [ss_data, ot_data]
 
 fig = plt.figure(1, figsize=(9, 6))
@@ -81,7 +83,11 @@ ax = fig.add_subplot(111)
 
 ax.set_xlim([-4, max(max(ss_sample_run[0]), max(ot_sample_run[0])) + 4])
 
-ax.set_ylim([min(min(ss_sample_run[1]), min(ot_sample_run[1])) - 50000, max(max(ss_sample_run[1]), max(ot_sample_run[1])) + 50000])
+#ax.set_ylim([min(min(ss_sample_run[1]), min(ot_sample_run[1])) - 50000, max(max(ss_sample_run[1]), max(ot_sample_run[1])) + 50000])
+
+ax.set_ylim([optimal_solution - 50000, max(max(ss_sample_run[1]), max(ot_sample_run[1])) + 50000])
+
+plt.axhline(y = optimal_solution, color = 'b', ls = 'dashed')
 
 ss_b = ax.scatter(ss_sample_run[0], ss_sample_run[1], marker = 'x', color = 'c')
 ax.plot(ss_sample_run[0], ss_sample_run[1], color = 'c')
