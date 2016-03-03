@@ -18,11 +18,11 @@ int count_lines(char *filename) {
     return lines;
 };
 
-void init_instance(char *filename, int **instance, int cities) {
+void init_instance(char *filename, long long int **instance, int cities) {
     FILE *file = fopen(filename, "r");
     int i;
     for(i = 0; i < cities; i++) {
-        fscanf(file, "%d %d %d", &instance[i][0],
+        fscanf(file, "%lli %lli %lli", &instance[i][0],
                &instance[i][1], &instance[i][2]);
     };
     fclose(file);
@@ -37,10 +37,10 @@ void load_tour(char *filename, int *tour, int tour_size) {
     fclose(file);
 };
 
-unsigned long tour_cost(int **instance, int *tour, int tour_size) {
+unsigned long long int tour_cost(long long int **instance, int *tour, int tour_size) {
     int i;
-    unsigned long cost = 0;
-    unsigned long partial_cost;
+    unsigned long long int cost = 0;
+    unsigned long long int partial_cost;
     int city_a, a_x, a_y,
         city_b, b_x, b_y;
 
@@ -54,8 +54,15 @@ unsigned long tour_cost(int **instance, int *tour, int tour_size) {
         b_x           = instance[city_b][1];
         b_y           = instance[city_b][2];
 
-        partial_cost  = sqrt((double) (((b_x - a_x) * (b_x - a_x)) +
-                                       ((b_y - a_y) * (b_y - a_y))));
+        partial_cost  = llround(
+                                sqrt(
+                                        (double) ( ((b_x - a_x)  *
+                                                    (b_x - a_x)) +
+                                                   ((b_y - a_y)  *
+                                                    (b_y - a_y))
+                                        )
+                                )
+                        );
 
         cost         += partial_cost;
     };
@@ -70,13 +77,13 @@ int main(int argc, char *argv[]) {
 
     load_tour(argv[1], tour, tour_size);
 
-    int **instance = (int **) malloc(sizeof(int *) * tour_size);
+    long long int **instance = (long long int **) malloc(sizeof(long long int *) * tour_size);
     for(i = 0; i < tour_size; i++) {
-        instance[i] = (int *) malloc(3 * sizeof(int));
+        instance[i] = (long long int *) malloc(3 * sizeof(long long int));
     };
 
     init_instance(INSTANCE, instance, tour_size - 1);
 
-    printf("%lu\n", tour_cost(instance, tour, tour_size));
+    printf("%llu\n", tour_cost(instance, tour, tour_size));
     return 0;
 };
