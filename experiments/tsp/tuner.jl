@@ -1,3 +1,5 @@
+#addprocs(8)
+
 @everywhere begin
     using StochasticSearch, Base.Random.uuid4
     function tour_cost(x::Configuration, parameters::Dict{Symbol, Any})
@@ -14,16 +16,16 @@ end
 
 println("[Starting Tuning Experiment]")
 
-target   = "results/pla85900/jl/15min/1w_smm"
+target   = "./test"
 size     = 85900
-runs     = 8
+runs     = 1
 duration = 900
 
 #run(`mkdir $target`)
 
 run(`mkdir .tmp`)
 
-for j = 5:runs
+for j = 1:runs
     println("[Initializing Tuning Run $(string(j))]")
     tour = ["1"]
     for i = 2:size
@@ -34,26 +36,16 @@ for j = 5:runs
     configuration = Configuration([PermutationParameter(tour ,"Tour")],
                                    "TSP Solution")
 
-    methods     = [:iterative_first_improvement,
-                   :iterative_greedy_construction,
-                   :iterative_probabilistic_improvement,
-                   :randomized_first_improvement,
-                   :simulated_annealing]
+    tuning_run = Run(cost                = tour_cost,
+                     cost_evaluations    = 1,
+                     starting_point      = configuration,
+                     methods             = [[:iterated_local_search 8];],
+                     stopping_criterion  = elapsed_time_criterion,
+                     duration            = duration,
+                     reporting_criterion = elapsed_time_reporting_criterion,
+                     report_after        = 20)
 
-    instances   = [2, 2, 2, 2, 2]
-
-    parameters = Dict(:cost               => tour_cost,
-                      :cost_args          => Dict{Symbol, Any}(),
-                      :initial_config     => configuration,
-                      :report_after       => 20,
-                      :measurement_method => sequential_measure_mean!,
-                      :stopping_criterion => elapsed_time_criterion,
-                      :seconds            => duration,
-                      :methods            => methods,
-                      :instances          => instances,
-                      :evaluations        => 1)
-
-    search_task = @task optimize(parameters)
+    search_task = @task optimize(tuning_run)
 
     run(`mkdir $target/run_$(string(j))`)
     best = open("$target/run_$(string(j))/best.txt", "a")
